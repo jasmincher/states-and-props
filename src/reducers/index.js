@@ -1,6 +1,5 @@
-import {combineReducers} from 'redux';
-import {name} from './nameReducers';
+import { combineReducers } from 'redux';
+import  { nameReducer } from './nameReducers';
 
 
-
-export default combineReducers({name});
+export default combineReducers({name: nameReducer});

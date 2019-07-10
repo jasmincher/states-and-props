@@ -1,10 +1,14 @@
 import React from 'react';
+import { connect } from "react-redux";
+import { nameChange } from '../actions';
+
+
+
 
 class Person extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {firstName: '', lastName: '' };
-
+        this.state = { firstName: '', lastName: '' };
     }
 
 
@@ -25,9 +29,9 @@ class Person extends React.Component {
     render() {
         return (
             <form>
-                <h1>My name is: {this.state.firstName} {this.state.lastName}</h1>
+                <h1>My name is: {this.props.name} {this.state.lastName}</h1>
                 First Name: <br />
-                <input type="text" onChange={this.changeFirst} /> <br />
+                <input type="text" onChange={(e) => this.props.dispatch(nameChange(e.target.value))} /> <br />
                 Last Name: <br />
                 <input type="text" onChange={this.changeLast} />
             </form>
@@ -38,5 +42,12 @@ class Person extends React.Component {
     }
 }
 
-export default Person;
+const mapStateToProps = (state) => {
+    const { name } = state;
+    
+    return name;
+}
+
+
+export default connect(mapStateToProps)(Person);
 

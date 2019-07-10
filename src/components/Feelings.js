@@ -1,4 +1,6 @@
 import React from 'react';
+import { connect } from "react-redux";
+
 
 
 
@@ -48,4 +50,11 @@ class Feelings extends React.Component {
     }
 }
 
-export default Feelings;
+const mapStateToProps = state => {
+    const { name } = state;
+    return name;
+
+}
+
+
+export default connect(mapStateToProps)(Feelings);
